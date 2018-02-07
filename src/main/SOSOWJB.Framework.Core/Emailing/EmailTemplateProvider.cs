@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System;
+using System.IO;
+using System.Text;
 using Abp.Dependency;
 using Abp.Extensions;
 using Abp.IO.Extensions;
@@ -19,7 +21,8 @@ namespace SOSOWJB.Framework.Emailing
 
         public string GetDefaultTemplate(int? tenantId)
         {
-            using (var stream = typeof(EmailTemplateProvider).GetAssembly().GetManifestResourceStream("SOSOWJB.Framework.Emailing.EmailTemplates.default.html"))
+            var templatePath = Path.Combine(Path.GetDirectoryName(typeof(FrameworkCoreModule).GetAssembly().Location) ?? throw new InvalidOperationException(), "Emailing", "EmailTemplates", "default.html");
+            using (var stream = File.OpenRead(templatePath))
             {
                 var bytes = stream.GetAllBytes();
                 var template = Encoding.UTF8.GetString(bytes, 3, bytes.Length - 3);
