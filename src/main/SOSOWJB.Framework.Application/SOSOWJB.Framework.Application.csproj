@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props"></Import>
+
+  <PropertyGroup>
+    <TargetFrameworks>net461;netcoreapp2.0</TargetFrameworks>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <AssemblyName>SOSOWJB.Framework.Application</AssemblyName>
+    <PackageId>SOSOWJB.Framework.Application</PackageId>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <RootNamespace>SOSOWJB.Framework</RootNamespace>
+    <Authors>SOSOWJB.Framework.Application</Authors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EPPlus.Core" Version="1.5.4" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
+    <Reference Include="System.Drawing" />
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Transactions" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SOSOWJB.Framework.Application.Shared\SOSOWJB.Framework.Application.Shared.csproj" />
+    <ProjectReference Include="..\SOSOWJB.Framework.Core\SOSOWJB.Framework.Core.csproj" />
+    <ProjectReference Include="..\SOSOWJB.Framework.EntityFrameworkCore\SOSOWJB.Framework.EntityFrameworkCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Transactions" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net461'">
+    <DefineConstants>FEATURE_LDAP;FEATURE_SIGNALR</DefineConstants>
+  </PropertyGroup>
+
+</Project>
