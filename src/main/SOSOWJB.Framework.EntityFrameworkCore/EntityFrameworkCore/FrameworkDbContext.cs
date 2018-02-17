@@ -6,6 +6,11 @@ using SOSOWJB.Framework.Authorization.Users;
 using SOSOWJB.Framework.Chat;
 using SOSOWJB.Framework.Editions;
 using SOSOWJB.Framework.Friendships;
+using SOSOWJB.Framework.KYP.Accounts;
+using SOSOWJB.Framework.KYP.Addresses;
+using SOSOWJB.Framework.KYP.Auctions;
+using SOSOWJB.Framework.KYP.Inventory;
+using SOSOWJB.Framework.KYP.Orders;
 using SOSOWJB.Framework.MultiTenancy;
 using SOSOWJB.Framework.MultiTenancy.Accounting;
 using SOSOWJB.Framework.MultiTenancy.Payments;
@@ -30,6 +35,26 @@ namespace SOSOWJB.Framework.EntityFrameworkCore
         public virtual DbSet<Invoice> Invoices { get; set; }
 
         public virtual DbSet<PersistedGrantEntity> PersistedGrants { get; set; }
+
+        // 快易拍 **************************************************
+
+        public virtual DbSet<KypAccount> KypAccounts { get; set; }
+
+        public virtual DbSet<Address> Addresses { get; set; }
+
+        public virtual DbSet<Province> Provinces { get; set; }
+
+        public virtual DbSet<City> Cities { get; set; }
+
+        public virtual DbSet<Bid> Bids { get; set; }
+
+        public virtual DbSet<Item> Items { get; set; }
+
+        public virtual DbSet<ItemPic> ItemPics { get; set; }
+
+        public virtual DbSet<Order> Orders { get; set; }
+
+        // ***********************************************************
 
         public FrameworkDbContext(DbContextOptions<FrameworkDbContext> options)
             : base(options)
